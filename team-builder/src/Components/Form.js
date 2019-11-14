@@ -5,17 +5,7 @@ import MemberList from './MemberList';
 
 function Form (props){
 
-  const [teamMembers, setTeamMembers] = useState([
-    {
-    name: 'Emma',
-    email: 'emmaandrews@hotmail.com',
-    role: 'UX'
-  },
-  {
-    name: 'Matt',
-    email: 'Matt@hotmail.com',
-    role: 'Full-Stack Developer'
-  }])
+  const [teamMembers, setTeamMembers] = useState([])
       
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,6 +15,7 @@ function Form (props){
       role: e.target.role.value
     }
     setTeamMembers(teamMembers.concat(newMember))
+
   }
 
         return (
@@ -61,14 +52,17 @@ function Form (props){
                     <input type="submit" />
                 </form>
                 <h2>Team Members</h2>
-                {
+                { teamMembers.length === 0 ? 
+                      <div>
+                        <p>There are no members in this team.</p>
+                      </div> :
                   teamMembers.map((curr, index) => {
                     return (
                         <MemberList 
                           key={index}
                           curr={curr}/>
                           ) 
-                        })
+                        }) 
                 }
                 
       </div>
