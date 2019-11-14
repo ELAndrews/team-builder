@@ -15,7 +15,7 @@ function Form (props){
       role: e.target.role.value
     }
     setTeamMembers(teamMembers.concat(newMember))
-
+    e.target.reset();
   }
 
         return (
